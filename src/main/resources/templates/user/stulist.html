@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css" />
+		<script type="text/javascript" src="/layui/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="/layui/layui.js"></script>
+	</head>
+	<body>
+	<table id="demo" lay-filter="test">
+	</table>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script> 
+	<script>
+	layui.use('table', function(){
+	  var table = layui.table;
+	  
+	  //第一个实例
+	  table.render({
+	    elem: '#demo'
+	    ,height: 600
+	    ,url: '/stus/list' //数据接口
+	    ,page: true //开启分页 
+	    ,cols: [[ //表头
+	       {field: 'id', title: 'id', width:80, fixed: 'left'}
+	      ,{field: 'name', title: '用户名', width:80}
+	      ,{field: 'age', title: '年龄', width:80}
+	      ,{field: 'sid', title: '学号', width:80} 
+	      ,{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}
+	    ]]
+	  });
+	//监听工具条
+	  table.on('tool(test)', function(obj){
+	    var data = obj.data;
+	    if(obj.event === 'detail'){
+	    	 $.ajax({
+		    		url:'/stus/findStu/'+data.id,
+	    	    	type:'get',
+	    	    	success:function(data){
+	    	    		var ss="<table><tbody><tr><td>姓名</td><td>"+data.name+"</td></tr><tr><td>年龄</td><td>"+data.age+"</td></tr><tr><td>学号</td><td>"+data.sid+"</td></tr> </tbody></table>";
+	    	    		layer.open({
+	    	    			  content: ss
+	    	    			  ,btn: ['确认', '取消']
+	    	    			  ,yes: function(index, layero){
+	    	    			    //按钮【按钮一】的回调
+	    	    			  }
+	    	    			  ,btn2: function(index, layero){
+	    	    			    //按钮【按钮二】的回调	    			    
+	    	    			    //return false 开启该代码可禁止点击该按钮关闭
+	    	    			  }
+	    	    			  ,cancel: function(){ 
+	    	    			    //右上角关闭回调 
+	    	    			    //return false 开启该代码可禁止点击该按钮关闭
+	    	    			  }
+	    	    			});
+	    	    	}  
+		    });
+	     //layer.msg('ID：'+ data.id + ' 的查看操作');
+	    } else if(obj.event === 'del'){
+	      layer.confirm('真的删除这条信息吗？', function(index){
+	    	  console.log(data.id); 
+	    	 $.ajax({
+	    		url:'/stus/delStu/'+data.id,
+    	    	type:'get',
+    	    	success:function(data){
+    	    		layer.msg(data.msg);
+    	    	}  
+	    	  });
+	          obj.del();
+	          layer.close(index);
+	      });
+	    } else if(obj.event === 'edit'){
+	       
+	      layer.alert('编辑行：<br />'+ JSON.stringify(data))
+	    }
+	  });
+	  
+	});	
+	</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>添加学生</title>
+		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css" />
+		<script type="text/javascript" src="/layui/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="/layui/layui.js"></script>
+	</head>
+	<body>
+	<form class="layui-form">
+  <div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+   <div class="layui-input-inline">
+      <input type="text" name="name"  id="name" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" />
+    </div>
+  </div>
+<div class="layui-form-item">
+    <label class="layui-form-label">学号</label>
+    <div class="layui-input-inline">
+      <input type="text" name="sid" id="sid"   lay-verify="required" placeholder="请输入学号" autocomplete="off" class="layui-input" />
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">年龄</label>
+    <div class="layui-input-inline">
+      <input type="text" name="age" id="age"  lay-verify="required" placeholder="请输入年龄" autocomplete="off" class="layui-input" />
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" id="sub">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+ 
+});
+$("#sub").click(function(){
+	var name=$("#name").val();
+	var age=$("#age").val();
+	var sid=$("#sid").val();
+	console.log(name+age+sid);
+	$.ajax({
+   		url:'/stus/add',
+    	type:'POST',
+    	dataType: "json",
+    	contentType: "application/json",
+    	data:"{\"name\":\""+name+"\",\"age\":\""+age+"\",\"sid\":\""+sid+"\"}",
+    	success:function(data){
+    		layer.msg(data.msg);
+    	} 	
+    }); 
+});
+</script>
+	</body>
+</html>

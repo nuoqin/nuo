@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css" />
+		<script type="text/javascript" src="/layui/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="/layui/layui.js"></script>
+	</head>
+	<body style="background:url(/img/timg.jpg) no-repeat;background-size:100%">
+<div style="width:365px; margin:0 auto; border:1px solid #ccc; position:fixed; top:40%; right:5%">
+<form class="layui-form" action="/indexs" method="post">
+<div class="layui-form-item" style="text-align:center;">
+    <h3>会员登录</h3>     
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户：</label>
+       <div class="layui-input-inline">
+         <input type="text" name="username"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" />
+       </div>
+  </div>
+  <div class="layui-form-item">
+     <label class="layui-form-label">密码：</label>
+        <div class="layui-input-inline">
+           <input type="password" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" />
+        </div>
+   </div>
+    <div class="layui-form-item" style="text-align:center;">
+      <input class="layui-btn" type="submit" value="登录" /><a class="layui-btn">注册</a>
+   </div>
+    
+</form>
+</div>			
+	</body>
+</html>
