@@ -49,6 +49,10 @@ public class LoginInterceptor implements HandlerInterceptor{
 		for (Cookie cookie : cookies) {
 			System.out.println(cookie.getName()+"---->"+cookie.getValue());
 		}
+		//1.
+		//2.
+		//3.
+		
 		//3.判断用户是否过期
 		if(user!=null){
 			//4.是通过

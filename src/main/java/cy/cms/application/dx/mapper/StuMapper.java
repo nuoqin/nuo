@@ -33,4 +33,5 @@ public interface StuMapper {
 	//更新
 	@Update("update stu set name=(#{name}),age=(#{age},sid=#{sid}) where id=(#{id})")
 	void UpdateStu(Stu stu,Long id);
+	
 }

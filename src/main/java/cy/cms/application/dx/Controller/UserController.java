@@ -31,6 +31,10 @@ public class UserController {
 		 if (result) {
 			session.setAttribute("user", user);
 			Cookie cookie=new Cookie("username", user.getUsername());
+			//1.
+			//2.
+			//3.
+			//4.
 			response.addCookie(cookie);
 			model.addAttribute("user", user.getUsername());
 			return "user/index";

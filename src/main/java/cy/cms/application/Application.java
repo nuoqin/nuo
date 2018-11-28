@@ -6,10 +6,16 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+
 
 import com.github.pagehelper.PageHelper;
-
+/**
+ * 
+ * 
+ * @author cui
+ * @since 2018-11-28 整合redis 导入sso
+ *
+ */
 
 @MapperScan("cy.cms.application.dx.mapper")
 @SpringBootApplication
