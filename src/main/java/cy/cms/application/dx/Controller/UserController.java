@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.aliyuncs.http.HttpRequest;
@@ -52,7 +53,8 @@ public class UserController {
 		}
 	}
 	@RequestMapping("/login")
-	public String login(HttpSession session){			
+	public String login(){
+	
 			return "login";		
 	}
 	@RequestMapping("/addStu")
@@ -63,8 +65,13 @@ public class UserController {
 	}
 	@RequestMapping("/stu")
 	public String stuList(HttpSession session){	
-		
+
 			return "user/stulist";
 	}
-	
+	@RequestMapping("/{token}")
+	public String stuList(@PathVariable String token ){	
+
+			return "user/stulist";
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.cui.test;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
@@ -9,16 +10,24 @@ import org.junit.Test;
 
 public class demo {
 
-	@Test
-	public void setM(){
-		
-		  Date now = new Date( );
-	      SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
-	      String string = ft.format(now);
-	      String bb=string;
-	      System.out.println(string.hashCode());
-	      System.out.println(bb.hashCode());
-	
+	public static void main(String[] args) {
+		System.out.println(setM("10"));
+		System.out.println(setM("abc"));
+	}
+	public static int setM(String num){
+		//Arrays.sort(a);
+		int i=0;
+		try {
+			i=Integer.parseInt(num);
+			return i;
+		} catch (Exception e) {
+			// TODO: handle exception
+			i=-1;
+		}finally{
+			i++;
+			
+		}
+		return i;
 	}
 	@Test
 	public void tst(){
