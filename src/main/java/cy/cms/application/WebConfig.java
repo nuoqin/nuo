@@ -33,6 +33,8 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	        //图片路径映射
 	        registry.addResourceHandler("/img/**").addResourceLocations("file:D:/img/");
 	        super.addResourceHandlers(registry);  
+	        
+	        
 	    }
 		/**
 		 * 拦截请求
