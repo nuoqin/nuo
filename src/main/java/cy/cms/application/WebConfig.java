@@ -30,7 +30,8 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 	       // registry.addResourceHandler("/templates/**").addResourceLocations("classpath:/templates/");
-
+	        //图片路径映射
+	        registry.addResourceHandler("/img/**").addResourceLocations("file:D:/img/");
 	        super.addResourceHandlers(registry);  
 	    }
 		/**

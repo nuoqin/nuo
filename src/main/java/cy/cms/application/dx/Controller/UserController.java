@@ -63,7 +63,7 @@ public class UserController {
 			
 	}
 	//修改登录信息
-	@RequestMapping("/updateUser")
+	@RequestMapping("/addStu")
 	public String addStu(HttpServletRequest request){	
 
 		return "user/addStu";

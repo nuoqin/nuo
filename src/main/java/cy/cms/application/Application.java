@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 
 
@@ -37,5 +38,6 @@ public class Application {
          pageHelper.setProperties(properties);
          return pageHelper;
      }
+     
   
 }
