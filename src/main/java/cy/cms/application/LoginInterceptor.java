@@ -53,6 +53,10 @@ public class LoginInterceptor implements HandlerInterceptor{
 		//1.取出cookie里的用户
 		Cookie[] cookies = request.getCookies();
 		String username="";
+		if(cookies.length<1){
+			response.sendRedirect(request.getContextPath()+"/login");
+			return false;
+		}
 		for (Cookie cookie : cookies) {
 			if(cookie.getName().equals("token")){
 				username=cookie.getValue();

@@ -13,6 +13,7 @@ public interface UserService {
 	List<User> select();
 	//查用户
 	Boolean getUser(User user);
-	
+	//修改密码
+	void updatePassWord(String password, Integer id);
 	
 }

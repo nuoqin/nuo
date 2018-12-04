@@ -8,6 +8,8 @@ import javax.servlet.http.Cookie;
 
 import org.junit.Test;
 
+import com.mysql.fabric.xmlrpc.base.Data;
+
 public class demo {
 
 	public static void main(String[] args) {
@@ -31,9 +33,11 @@ public class demo {
 	}
 	@Test
 	public void tst(){
-		Cookie cookie=new Cookie("username", "cuiweijie");
-		
-		
+		//Cookie cookie=new Cookie("username", "cuiweijie");
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date date=new Date();
+		String string = format.format(date.getTime());
+		System.out.println(string);
 		
 	}
 	@Test

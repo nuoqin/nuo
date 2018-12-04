@@ -43,6 +43,13 @@ public class UserServiceImp implements UserService {
 			}
 		return true;
 	}
+	//修改密码
+	@Override
+	public void updatePassWord(String password, Integer id) {
+		// TODO Auto-generated method stub
+		um.updatePassWord(password, id);
+		
+	}
 
 	
 }

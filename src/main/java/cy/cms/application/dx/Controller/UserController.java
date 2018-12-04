@@ -1,6 +1,8 @@
 package cy.cms.application.dx.Controller;
 
+
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -8,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.aliyuncs.http.HttpRequest;
-import com.aliyuncs.http.HttpResponse;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import cy.cms.application.dx.Service.RedisService;
 import cy.cms.application.dx.Service.UserService;
@@ -28,7 +27,7 @@ public class UserController {
 	@Autowired
 	private RedisService rs;
 	
-	
+	//后台界面
 	@RequestMapping("/indexs")
 	public String login(User user,HttpSession session,Model model,HttpServletResponse response){	 
 		
@@ -41,37 +40,35 @@ public class UserController {
 			response.addCookie(cookie);
 			//2.清除密码
 			user.setPassword("");
-			String value = user.getUsername();
+			String value = user.toString();
 			//3.把用户信息放入redis缓存 key用户登录信息
 			String key="login:token:"+user.getUsername();
 			
-			rs.setS(key, value);
+			rs.setO(key, value,1800);
 			//4.返回静态界面
 			return "user/index";
 		}else{
 			return "login";
 		}
 	}
+	//登录界面
 	@RequestMapping("/login")
-	public String login(){
-	
-			return "login";		
-	}
-	@RequestMapping("/addStu")
-	public String addStu(HttpSession session){	
+	public String login(HttpServletRequest request){
 		
-			return "user/addStu";
+			//5.否返回登录界面
+			
+			return "login";	
+			
+		
+			
+	}
+	//修改登录信息
+	@RequestMapping("/updateUser")
+	public String addStu(HttpServletRequest request){	
+
+		return "user/addStu";
 
 	}
-	@RequestMapping("/stu")
-	public String stuList(HttpSession session){	
 
-			return "user/stulist";
-	}
-	@RequestMapping("/{token}")
-	public String stuList(@PathVariable String token ){	
-
-			return "user/stulist";
-	}
 
 }
