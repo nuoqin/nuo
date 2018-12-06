@@ -69,6 +69,12 @@ public class UserController {
 		return "user/addStu";
 
 	}
+	//修改登录信息
+		@RequestMapping("/stu")
+		public String stu(HttpServletRequest request){	
 
+			return "user/stulist";
+
+		}
 
 }
