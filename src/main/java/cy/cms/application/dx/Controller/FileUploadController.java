@@ -34,11 +34,11 @@ public class FileUploadController {
 		//2.上传文件名
 		String filename = file.getOriginalFilename();
 		//3.取出文件名后缀
-		String filesuffix=filename.substring(filename.indexOf(".")+1);
+		String filesuffix=filename.substring(filename.indexOf("."));
 		//4.文件上传路径
 		String filePath = "D://img//";
 		//5.新文件名
-		filename = UUID.randomUUID()+"." + filesuffix;
+		filename = UUID.randomUUID() + filesuffix;
 		//6保存
 		 File dest = new File(filePath + filename);
 		 file.transferTo(dest);
