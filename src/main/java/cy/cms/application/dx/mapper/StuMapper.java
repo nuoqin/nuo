@@ -31,7 +31,7 @@ public interface StuMapper {
 	@Delete("delete from stu where id=(#{id})")
 	void delStu(Long id);
 	//更新
-	@Update("update stu set name=(#{name}),age=(#{age},sid=#{sid}) where id=(#{id})")
-	void UpdateStu(Stu stu,Long id);
+	@Update("update stu set name=#{name},age=#{age},sid=#{sid} where id=(#{id})")
+	void UpdateStu(Stu stu);
 	
 }

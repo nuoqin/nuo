@@ -1,14 +1,20 @@
 package com.cui.test;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 
+import org.apache.http.client.ClientProtocolException;
 import org.junit.Test;
 
 import com.mysql.fabric.xmlrpc.base.Data;
+
+import cy.cms.application.dx.util.HttpClient;
 
 public class demo {
 
@@ -64,6 +70,24 @@ public class demo {
 			
 		}
 		
+		
+	}
+	
+	@Test
+	public void getyokrn() {
+		Map map=new HashMap();
+		map.put("username", "root");
+		map.put("password","123456");
+		HttpClient client=new HttpClient("http://localhost:8084/meeting/login/loginService",map);
+		try {
+			client.post();
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

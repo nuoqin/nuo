@@ -70,7 +70,11 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-activemq</artifactId>
 		</dependency>
-		
+		<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-core</artifactId>
+		    <version>1.2.0</version>
+		</dependency>
 		<!-- redis -->	
 	    
 		<dependency> 
@@ -118,7 +122,28 @@
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-data-mongodb</artifactId>
 	    </dependency>
-        
+        <dependency>
+        <!-- websocket -->
+        <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi</artifactId>
+	    <version>4.1.0</version>
+	</dependency>
+    <dependency>
+         <groupId>org.apache.poi</groupId>
+         <artifactId>poi-ooxml</artifactId>
+         <version>4.1.0</version>
+     </dependency>
+     <!-- 处理excel和上面功能是一样的-->
+     <dependency>
+         <groupId>net.sourceforge.jexcelapi</groupId>
+         <artifactId>jxl</artifactId>
+         <version>2.6.12</version>
+     </dependency>    
 </dependencies>
   <build>
 	  <plugins>

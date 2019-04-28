@@ -48,6 +48,18 @@ public class FileUploadController {
 		 result.setUrl(path);
 		return result;
 	}
+	/**
+	 * 上传视频
+	 * 
+	 */
+	@RequestMapping("/viode")
+	public void uploadViode(@RequestParam("video") MultipartFile video) {
+		
+		
+		
+	}
+	
+	
 	@RequestMapping("/file")
 
 	public String f(){

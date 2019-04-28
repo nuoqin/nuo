@@ -6,9 +6,10 @@ package cy.cms.application;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter{
@@ -37,13 +38,24 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	        
 	    }
 		/**
+	     * 默认访问页面	
+	     */
+	    @Override
+		public void addViewControllers(ViewControllerRegistry registry) {
+	    	
+	    	registry.addViewController( "/" ).setViewName( "login" );
+	        registry.setOrder( Ordered.HIGHEST_PRECEDENCE );
+	        super.addViewControllers(registry);
+		}
+		/**
 		 * 拦截请求
 		 */
 	    @Override
 	    public void addInterceptors(InterceptorRegistry registry) {
 	        //拦截规则：除了/indexs，/login其他都拦截判断 这里最好不要new 负责注入无效
-	        registry.addInterceptor(LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/login","/indexs");
+	        registry.addInterceptor(LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/","/login");
 	        super.addInterceptors(registry);
 	    }
+	    
 
 }

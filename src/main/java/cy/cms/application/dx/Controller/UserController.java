@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +29,13 @@ public class UserController {
 	//StringRedisTemplate
 	@Autowired
 	private RedisService rs;
+	@Value("${accessKeyId}")
+	private String accessKeyId;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	private final static Logger log= LoggerFactory.getLogger(UserController.class);
 	
 	//后台界面
 	@RequestMapping("/indexs")
@@ -46,35 +56,61 @@ public class UserController {
 			
 			rs.setO(key, value,1800);
 			//4.返回静态界面
+			System.out.println(accessKeyId);
 			return "user/index";
 		}else{
 			return "login";
 		}
 	}
 	//登录界面
+		@RequestMapping("/")
+		public String index(){
+			
+				//5.否返回登录界面
+				
+				return "login";			
+		}
+	//登录界面
 	@RequestMapping("/login")
-	public String login(HttpServletRequest request){
+	public String login(){
 		
 			//5.否返回登录界面
 			
-			return "login";	
-			
-		
-			
+			return "login";			
 	}
 	//修改登录信息
 	@RequestMapping("/addStu")
-	public String addStu(HttpServletRequest request){	
+	public String addStu(){	
 
 		return "user/addStu";
 
 	}
 	//修改登录信息
-		@RequestMapping("/stu")
-		public String stu(HttpServletRequest request){	
+	@RequestMapping("/stu")
+	public String stu(){	
 
-			return "user/stulist";
+		return "user/stulist";
+
+	}
+	//聊天室
+	@RequestMapping("/chat")
+	public String chat(){	
+
+		return "socket/chat";
+
+	}
+	//聊天室
+		@RequestMapping("/send")
+		public String send(){	
+
+			return "socket/send";
 
 		}
+	@RequestMapping("/updateStu")
+	public String updateStu(){	
+
+		return "user/updateStu";
+
+	}
 
 }

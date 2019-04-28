@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.pagehelper.Page;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -64,10 +64,10 @@ public class StuServiceImp implements StuService {
 		sm.delStu(id);
 	}
 	@Override
-	public void updateStu(Stu stu,Long id) {
+	public void updateStu(Stu stu) {
 		// TODO Auto-generated method stub
 		//Stu selectStyById = sm.selectStyById(id);
-		sm.UpdateStu(stu, id);
+		sm.UpdateStu(stu);
 		
 	}
 	@Override

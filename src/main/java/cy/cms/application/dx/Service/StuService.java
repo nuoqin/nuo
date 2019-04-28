@@ -17,5 +17,5 @@ public interface StuService {
 	//删
 	void delStu(Long id);
 	//更新
-	void updateStu(Stu stu,Long id);
+	void updateStu(Stu stu);
 }

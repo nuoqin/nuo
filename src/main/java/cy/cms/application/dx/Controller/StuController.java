@@ -59,11 +59,12 @@ public class StuController {
 		return stu;
 	}
 	//修改学生信息
-	@RequestMapping("/updateStu")
-	public void updateStu(@RequestBody Stu stu,Long id){
+	@RequestMapping("/update")
+	public String updateStu(@RequestBody Stu stu){
 		
-		ss.updateStu(stu, id);
-		
+		System.out.println(stu.getName());
+		ss.updateStu(stu);
+		return "ok";
 	}
 	//删除学生信息
 		@RequestMapping("/delStu/{id}")
